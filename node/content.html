@@ -20,27 +20,34 @@
             margin-top:-22px;
 
         }
+        .test-img{
+            width:100px;
+            height:40px;
+        }
     
     </style>
 </head>
 <body>
 <div class="text-box">
 该书已被删除~
-<img src="../resources/Login_success.png" class="test-img"/>
+<img src="./logo40.png" class="test-img"/>
 </div>
 </body>
-<script src="../resources/content.js"></script>
-<script>
+<script src="./content.js"></script>
+<!-- <script>
     var xhr=new XMLHttpRequest()
     xhr.open('get', '/file_list');
     xhr.onreadystatechange=function(){
         if(xhr.readyState==4&&xhr.status==200){
-            console.log(xhr.responseText)
-            console.log(JSON.parse(xhr.responseText))
+
+            const data=JSON.parse(xhr.responseText)
+            data.forEach(element => {
+                document.write(element.url+"---"+element.size+"---"+element.mtime+"---"+element.isFile+"<br />")
+            });
         }
     }
     xhr.send()
     
 
-</script>
+</script> -->
 </html>
