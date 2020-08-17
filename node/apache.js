@@ -21,42 +21,42 @@ server.on('request',(req,res)=>{
             res.end(data)
         })
      }
-    // else if(url==="/file_list"){
-    //     fs.readdir("./","utf-8",function(err,data){
-    //         // fs.stat(data[0],(err,data_info)=>{
-    //         //     console.log(data_info)
-    //         // })
-    //         const files=[]
-    //        for(var i=0;i<data.length;i++){
-    //           ( (index)=>{
-    //             fs.stat(data[i],(err,data_info)=>{
-    //                 files.push({
-    //                     url:data[index],
-    //                     size:data_info.size,
-    //                     mtime:moment(data_info.mtime).format("YYYY-MM-DD HH:MM:SS"),
-    //                     isFile:data_info.isFile(),
-    //                     data_info:data_info
-    //                 })
-    //                 if(files.length===data.length){
-    //                     res.end(JSON.stringify(files))
-    //                 }
-    //         })
-    //            })(i)
+    else if(url==="/file_list"){
+        fs.readdir("./","utf-8",function(err,data){
+            // fs.stat(data[0],(err,data_info)=>{
+            //     console.log(data_info)
+            // })
+            const files=[]
+           for(var i=0;i<data.length;i++){
+              ( (index)=>{
+                fs.stat(data[i],(err,data_info)=>{
+                    files.push({
+                        url:data[index],
+                        size:data_info.size,
+                        mtime:moment(data_info.mtime).format("YYYY-MM-DD HH:MM:SS"),
+                        isFile:data_info.isFile(),
+                        data_info:data_info
+                    })
+                    if(files.length===data.length){
+                        res.end(JSON.stringify(files))
+                    }
+            })
+               })(i)
                 
-    //        }
+           }
                 
             
 
-    //         //res.end(JSON.stringify(data))
-    //     })
-    // }else{
-    //     //静态资源
-    //     fs.readFile(`.${url}`,(err,data)=>{
+            //res.end(JSON.stringify(data))
+        })
+    }else{
+        //静态资源
+        fs.readFile(`.${url}`,(err,data)=>{
 
-    //         res.end(data)
-    //     })
+            res.end(data)
+        })
 
-    // }
+    }
     
     
 })
