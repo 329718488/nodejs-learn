@@ -1,0 +1,7 @@
+select id,name from tablename where id=1  //查询
+
+update tablename set name='newvalue',age=23 where id=2 //更改
+
+insert into tablename(name,age) values('namevalue',agevalue) 
+
+delete from tablename where id=2
