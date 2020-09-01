@@ -19,5 +19,14 @@ exports.endConnetion=()=>{
     connection.end()
 }
 
+exports.getone=(id)=>{
+    return new Promise((resolve,reject)=>{
+        const sql=`select * from person where id=${id}`
+        connection.query(sql,(err,data)=>{
+            resolve(data)
+        })
+    })
+}
+
 
 

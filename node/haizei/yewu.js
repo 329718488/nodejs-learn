@@ -7,5 +7,13 @@ linkdb.getPerson().then(data=>{
 
 })
 
+exports.getone=(id)=>{
+    return new Promise((resolve,reject)=>{
+        linkdb.getone(id).then((res)=>{
+            resolve(res)
+        })
+    })
+}
+
 
 
