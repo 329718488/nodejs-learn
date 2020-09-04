@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>出错啦</title>
+    <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        .text-box{
+            width:100%;
+            height:44px;
+            font-size:14px;
+            color:#ccc;
+            text-align:center;
+            line-height:44px;
+            position:fixed;
+            left:0;
+            top:10%;
+            margin-top:-22px;
+
+        }
+        .test-img{
+            width:100px;
+            height:40px;
+        }
+    
+    </style>
+</head>
+<body>
+<div class="text-box">
+啦啦啦
+{{each data}}
+
+<div>
+    <span>{{$value.id}}---</span>
+    <span>{{$value.name}}---</span>
+    <span>{{$value.age}}---</span>
+    <span>{{$value.sex}}---</span>
+    <span>{{$value.skill}}</span>
+</div>
+
+
+{{/each}}
+</div>
+</body>
+<!-- <script src="./content.js"></script>-->
+<script>
+    var xhr=new XMLHttpRequest()
+    xhr.open('POST', '/insert');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset-UTF-8");
+    xhr.onreadystatechange=function(){
+        // if(xhr.readyState==4&&xhr.status==200){
+
+        //     const data=JSON.parse(xhr.responseText)
+        //     data.forEach(element => {
+        //         document.write(element.url+"---"+element.size+"---"+element.mtime+"---"+element.isFile+"<br />")
+        //     });
+        // }
+    }
+    
+    xhr.send('name='+'哈哈哈哈'+"&contents="+11111)
+    
+
+</script> 
+</html>
