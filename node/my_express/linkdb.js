@@ -37,5 +37,24 @@ exports.insertOne=()=>{
     })
 }
 
+exports.updateOne=(params)=>{
+    let str=""
+    Object.keys(params).forEach((item,index,arr)=>{
+        if(item!=="id"){
+            str+=`${item}="${params[item]}"${index<arr.length-2?",":""}`
+        }
+    })
+
+    return new Promise((resolve,reject)=>{
+        const sql=`update person set ${str} where id=${params.id};`
+        connection.query(sql,(err,data)=>{
+            console.log(err);
+            resolve(data)
+        })
+    })
+}
+
+
+
 
 

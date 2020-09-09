@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="/style.css">
     <style>
         .text-box{
             width:100%;
@@ -27,8 +28,12 @@
     
     </style>
 </head>
+
 <body>
 <div class="text-box">
+    <div >
+        <input type="file" id="upload-input">
+    </div>
 啦啦啦
 {{each data}}
 
@@ -37,29 +42,23 @@
     <span>{{$value.name}}---</span>
     <span>{{$value.age}}---</span>
     <span>{{$value.sex}}---</span>
-    <span>{{$value.skill}}</span>
+    <span>{{$value.skill}}---</span>
+    
 </div>
 
 
 {{/each}}
+
 </div>
 </body>
-<!-- <script src="./content.js"></script>-->
-<script>
-    var xhr=new XMLHttpRequest()
-    xhr.open('POST', '/insert');
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset-UTF-8");
-    xhr.onreadystatechange=function(){
-        // if(xhr.readyState==4&&xhr.status==200){
 
-        //     const data=JSON.parse(xhr.responseText)
-        //     data.forEach(element => {
-        //         document.write(element.url+"---"+element.size+"---"+element.mtime+"---"+element.isFile+"<br />")
-        //     });
-        // }
-    }
+<script src="/content.js"></script>
+
+
+
+
+
     
-    xhr.send('name='+'哈哈哈哈'+"&contents="+11111)
     
 
 </script> 
