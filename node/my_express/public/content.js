@@ -1,5 +1,11 @@
 
-document.getElementById("upload-input").addEventListener("change",fileChange)
+if(document.getElementById("upload-input")){
+    document.getElementById("upload-input").addEventListener("change",fileChange)
+}
+
+if(document.getElementById("login")){
+    document.getElementById("login").addEventListener("click",login)
+}
 
 
 function fileChange(e){
@@ -41,4 +47,22 @@ function insert(){
     // }
     
     // xhr.send('name='+'哈哈哈哈'+"&contents="+11111)
+}
+
+function login(){
+    var xhr=new XMLHttpRequest()
+    xhr.open('POST', '/login');
+    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset-UTF-8");
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&xhr.status==200){
+            // const ss=document.createElement(xhr.responseText)
+            // document.append(ss)
+            
+        }
+    }
+    const form=new FormData()
+    form.append("name","哈哈哈哈")
+    form.append("contents","11111")
+    
+    xhr.send(form)
 }

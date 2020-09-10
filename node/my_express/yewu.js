@@ -13,6 +13,12 @@ exports.getone=(id)=>{
     })
 }
 exports.getHtml=(req,res)=>{ 
+    if(!req.session.session_data){
+        const backstr="<script>window.location.href='/login'</script>"
+        res.setHeader("Content-type","text/html;charset=utf-8");
+        res.send(backstr)
+        return;
+    }
         linkdb.getPerson().then(data=>{
             // const content =template("./content.html",{data:data})
             // res.end(content)
@@ -66,7 +72,35 @@ exports.upload=(req,res)=>{
 
 
 }
+exports.login=(req,res)=>{ 
+//     let str = "";
+// req.on("data", (chip) => {
+//   str += chip;
+// });
+// req.on("end", () => {
+//     //假设已经允许登录，接下来要写cookie或者session
+//     const userInfo=querystring.parse(str)
+//     req.session.session_data=userInfo
+//   res.setHeader("content-type", "text/html;charset=utf-8");
+//   res.render("./content.html")
+// });
 
+const form=new formidable.IncomingForm()
+form.parse(req,(err,fields)=>{
+    if(fields.name==="哈哈哈哈"&&fields.contents==="11111"){
+        req.session.session_data=fields;
+        const backstr="<script>alert('成功!');window.location.href='/'</script>"
+        res.setHeader("Content-type","text/html;charset=utf-8");
+        res.send(backstr)
+    }else{
+        res.send(JSON.stringify(fields))
+    }
+})
+
+}
+exports.getLoginHtml=(req,res)=>{
+    res.render("./login.html")
+}
 
 
 
